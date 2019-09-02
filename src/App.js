@@ -52,6 +52,15 @@ const Widget = props => {
 const DRAWER_WIDTH = 250;
 
 const useStyles = makeStyles(theme => ({
+  mapOverlay: {
+    zIndex: 1,
+    background: "aliceblue",
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    top: 0
+  },
   list: {
     width: DRAWER_WIDTH
   },
@@ -62,7 +71,6 @@ const useStyles = makeStyles(theme => ({
     bottom: 0,
     top: 0,
     padding: theme.spacing(2),
-    background: "aliceblue",
     display: "flex",
     flexDirection: "column"
   },
@@ -70,10 +78,12 @@ const useStyles = makeStyles(theme => ({
     left: DRAWER_WIDTH
   },
   header: {
+    zIndex: 2,
     flex: 0,
     height: theme.spacing(8)
   },
   main: {
+    zIndex: 2,
     flex: 1,
     display: "flex"
   },
@@ -97,6 +107,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   footer: {
+    zIndex: 2,
     flex: 0,
     display: "flex",
     justifyContent: "end",
@@ -245,6 +256,11 @@ export default function TemporaryDrawer() {
             </Typography>
           </Paper>
         </footer>
+        <div id="map-overlay" className={classes.mapOverlay}>
+          This entire blue background is the map overlay that in real life will
+          be created by OL and injected into <code>div#map</code>. Hence, it's
+          essential to defined a <code>#map</code> element.
+        </div>
       </div>
       <Drawer
         open={visible}
