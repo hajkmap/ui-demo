@@ -7,6 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import { Tooltip } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,30 +36,36 @@ export default function SearchBox(props) {
 
   return (
     <Paper className={classes.root}>
-      <IconButton
-        onClick={props.onMenuClick}
-        className={classes.iconButton}
-        disabled={props.isDisabled}
-        aria-label="menu"
-      >
-        <MenuIcon />
-      </IconButton>
+      <Tooltip title="Visa verktygspanelen">
+        <IconButton
+          onClick={props.onMenuClick}
+          className={classes.iconButton}
+          disabled={props.isDisabled}
+          aria-label="menu"
+        >
+          <MenuIcon />
+        </IconButton>
+      </Tooltip>
       <InputBase
         className={classes.input}
         placeholder="Sök i Hajk"
         inputProps={{ "aria-label": "search google maps" }}
       />
-      <IconButton className={classes.iconButton} aria-label="search">
-        <SearchIcon />
-      </IconButton>
+      <Tooltip title="Sök i Hajk">
+        <IconButton className={classes.iconButton} aria-label="search">
+          <SearchIcon />
+        </IconButton>
+      </Tooltip>
       <Divider className={classes.divider} orientation="vertical" />
-      <IconButton
-        color="primary"
-        className={classes.iconButton}
-        aria-label="MoreHoriz"
-      >
-        <MoreHorizIcon />
-      </IconButton>
+      <Tooltip title="Visa fler sökalternativ">
+        <IconButton
+          color="primary"
+          className={classes.iconButton}
+          aria-label="MoreHoriz"
+        >
+          <MoreHorizIcon />
+        </IconButton>
+      </Tooltip>
     </Paper>
   );
 }

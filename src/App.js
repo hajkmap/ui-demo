@@ -22,6 +22,7 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 
 import SearchBox from "./SearchBox";
+import { Tooltip } from "@material-ui/core";
 
 const ZoomButtons = () => {
   return (
@@ -256,25 +257,30 @@ export default function TemporaryDrawer() {
             className={classes.logo}
             src="https://github.com/hajkmap/Hajk/raw/master/design/logo_small.png"
           />
+          {/** Hide Lock button in mobile mode - there's not screen estate to permanently lock Drawer on mobile viewports*/}
           <Hidden xsDown>
-            <IconButton
-              aria-label="pin"
-              onClick={togglePermanent}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
+            <Tooltip
+              title={(permanent ? "Lås upp" : "Lås fast") + " verktygspanelen"}
             >
-              {permanent ? (
-                mouseOverLock ? (
-                  <LockOpenIcon />
-                ) : (
+              <IconButton
+                aria-label="pin"
+                onClick={togglePermanent}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                {permanent ? (
+                  mouseOverLock ? (
+                    <LockOpenIcon />
+                  ) : (
+                    <LockIcon />
+                  )
+                ) : mouseOverLock ? (
                   <LockIcon />
-                )
-              ) : mouseOverLock ? (
-                <LockIcon />
-              ) : (
-                <LockOpenIcon />
-              )}
-            </IconButton>
+                ) : (
+                  <LockOpenIcon />
+                )}
+              </IconButton>
+            </Tooltip>
           </Hidden>
         </div>
         <Divider />
