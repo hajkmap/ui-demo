@@ -150,10 +150,6 @@ export default function TemporaryDrawer() {
     setVisible(open);
   };
 
-  const handleDrawer = e => {
-    setVisible(!visible);
-  };
-
   const togglePermanent = () => {
     visible && setVisible(false);
     setPermanent(!permanent);
@@ -206,7 +202,10 @@ export default function TemporaryDrawer() {
         })}
       >
         <header className={classes.header}>
-          <SearchBox onMenuClick={handleDrawer} isDisabled={permanent} />
+          <SearchBox
+            onMenuClick={toggleDrawer(!visible)}
+            isDisabled={permanent}
+          />
         </header>
         <main className={classes.main}>
           <div className={classes.leftColumn}>
@@ -255,7 +254,7 @@ export default function TemporaryDrawer() {
           <img
             alt="Logo"
             className={classes.logo}
-            src="https://internkarta.halmstad.se/assets/logo.png"
+            src="https://github.com/hajkmap/Hajk/raw/master/design/logo_small.png"
           />
           <Hidden xsDown>
             <IconButton
