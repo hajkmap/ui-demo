@@ -61,6 +61,9 @@ const useStyles = makeStyles(theme => ({
     bottom: 0,
     top: 0
   },
+  mapOverlayShiftedLeft: {
+    left: DRAWER_WIDTH
+  },
   list: {
     width: DRAWER_WIDTH
   },
@@ -256,11 +259,16 @@ export default function TemporaryDrawer() {
             </Typography>
           </Paper>
         </footer>
-        <div id="map-overlay" className={classes.mapOverlay}>
-          This entire blue background is the map overlay that in real life will
-          be created by OL and injected into <code>div#map</code>. Hence, it's
-          essential to defined a <code>#map</code> element.
-        </div>
+      </div>
+      <div
+        id="map-overlay"
+        className={cslx(classes.mapOverlay, {
+          [classes.mapOverlayShiftedLeft]: permanent
+        })}
+      >
+        This entire blue background is the map overlay that in real life will be
+        created by OL and injected into <code>div#map</code>. Hence, it's
+        essential to defined a <code>#map</code> element.
       </div>
       <Drawer
         open={visible}
