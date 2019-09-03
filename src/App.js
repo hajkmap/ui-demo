@@ -59,7 +59,11 @@ const useStyles = makeStyles(theme => ({
     left: 0,
     right: 0,
     bottom: 0,
-    top: 0
+    top: 0,
+    padding: 300,
+    [theme.breakpoints.down("xs")]: {
+      padding: 0
+    }
   },
   mapOverlayShiftedLeft: {
     left: DRAWER_WIDTH
